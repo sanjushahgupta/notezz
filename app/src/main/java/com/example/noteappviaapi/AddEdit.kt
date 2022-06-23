@@ -49,8 +49,13 @@ class AddEdit : Fragment() {
                    ) {
                           if(response.isSuccessful){
                               Toast.makeText(activity,"note added successfully of userid" +response.body()!!.userId.toString(), Toast.LENGTH_LONG).show()
-                              it.findNavController().navigate(R.id.action_addEdit_to_show)
- }else{
+
+                              val UserToken = passedTokenFromLogin
+                               val bundles = bundleOf("UserToken" to UserToken )
+
+                              it.findNavController().navigate(R.id.action_addEdit_to_show,bundles)
+
+                          }else{
                             Toast.makeText(activity, response.code().toString() , Toast.LENGTH_LONG).show()
                           }
 

@@ -17,8 +17,6 @@ fun login(@Body model: userModel): Call<DefaultUserResponse>
 fun addNote(@Header("Authorization")token: String, @Body noteModel: noteModel): Call<addNoteResponseModel>
 
  @GET("/notes")
-  fun ShowNote(@Header("Authorization")token: String): Call<noteModel>
-
-
+  fun ShowNote(@Header("Authorization")token: String): Call<List<addNoteResponseModel>>
 
 }
