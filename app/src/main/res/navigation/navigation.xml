@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/startingpage">
+
+    <fragment
+        android:id="@+id/startingpage"
+        android:name="com.example.noteappviaapi.Startingpage"
+        android:label="Startingpage" >
+        <action
+            android:id="@+id/action_startingpage_to_signUp"
+            app:destination="@id/signUp" />
+        <action
+            android:id="@+id/action_startingpage_to_loginIn"
+            app:destination="@id/loginIn" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUp"
+        android:name="com.example.noteappviaapi.SignUp"
+        android:label="SignUp" />
+    <fragment
+        android:id="@+id/loginIn"
+        android:name="com.example.noteappviaapi.LoginIn"
+        android:label="LoginIn" >
+        <action
+            android:id="@+id/action_loginIn_to_addEdit"
+            app:destination="@id/addEdit" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEdit"
+        android:name="com.example.noteappviaapi.AddEdit"
+        android:label="AddEdit" />
+</navigation>
