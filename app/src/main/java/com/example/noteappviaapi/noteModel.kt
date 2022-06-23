@@ -1,3 +1,3 @@
 package com.example.noteappviaapi
 
-data class noteModel(val body: String, val status: String, val title: String)
+data class noteModel(val title:String, val body:String, val status:String="Active")

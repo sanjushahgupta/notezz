@@ -1,5 +1,7 @@
 package com.example.noteappviaapi
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.noteappviaapi.databinding.FragmentLoginInBinding
@@ -16,6 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 private lateinit var binding: FragmentLoginInBinding
 class LoginIn : Fragment(){
+    private val sharedPrefFile = "kotlinsharedpreference"
     override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
@@ -29,6 +33,8 @@ class LoginIn : Fragment(){
         val APIval = retrofitBuilder.create(APIService::class.java)
         val usermodel = userModel(binding.usernameEditTextLogin.text.toString(), binding.passwordEditTextLogin.text.toString());
         val call = APIval.login(usermodel)
+        val sharedPreferences: SharedPreferences = this.activity!!.getSharedPreferences(sharedPrefFile,Context.MODE_PRIVATE)
+
         call.enqueue(object : Callback<DefaultUserResponse> {
             override fun onFailure(call: Call<DefaultUserResponse>, t: Throwable) {
                 Log.d("msggo", t.toString());
@@ -40,9 +46,11 @@ class LoginIn : Fragment(){
                 response: Response<DefaultUserResponse>
             ) {
                 if (response.isSuccessful){
-                    it.findNavController().navigate(R.id.action_loginIn_to_addEdit)
-                    //TODO save token in shared reference
+                    val SavedToken = response.body()!!.token
+                    val bundle = bundleOf("SavedToken" to SavedToken )
 
+                    it.findNavController().navigate(R.id.action_loginIn_to_addEdit, bundle)
+                    //TODO save token in shared reference
                 }else{
                     val gson = Gson()
                     val message = gson.fromJson(
