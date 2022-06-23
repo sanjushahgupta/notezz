@@ -1,10 +1,7 @@
 package com.example.noteappviaapi
 
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.Header
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface APIService {
 
@@ -17,7 +14,10 @@ fun login(@Body model: userModel): Call<DefaultUserResponse>
 
 
 @POST("/notes")
-fun addNote(@Header("Authorization")token: String, @Body noteModel: noteModel): Call<noteModel>
+fun addNote(@Header("Authorization")token: String, @Body noteModel: noteModel): Call<addNoteResponseModel>
+
+ @GET("/notes")
+  fun ShowNote(@Header("Authorization")token: String): Call<noteModel>
 
 
 

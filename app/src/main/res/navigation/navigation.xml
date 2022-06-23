@@ -30,5 +30,13 @@
     <fragment
         android:id="@+id/addEdit"
         android:name="com.example.noteappviaapi.AddEdit"
-        android:label="AddEdit" />
+        android:label="AddEdit" >
+        <action
+            android:id="@+id/action_addEdit_to_show"
+            app:destination="@id/show" />
+    </fragment>
+    <fragment
+        android:id="@+id/show"
+        android:name="com.example.noteappviaapi.Show"
+        android:label="Show" />
 </navigation>

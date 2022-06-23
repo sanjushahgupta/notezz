@@ -50,7 +50,7 @@ class LoginIn : Fragment(){
                     val bundle = bundleOf("SavedToken" to SavedToken )
 
                     it.findNavController().navigate(R.id.action_loginIn_to_addEdit, bundle)
-                    //TODO save token in shared reference
+
                 }else{
                     val gson = Gson()
                     val message = gson.fromJson(
