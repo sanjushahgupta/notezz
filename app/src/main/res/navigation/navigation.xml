@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_loginIn_to_addEdit"
             app:destination="@id/addEdit" />
+        <action
+            android:id="@+id/action_loginIn_to_signUp"
+            app:destination="@id/signUp" />
     </fragment>
     <fragment
         android:id="@+id/addEdit"

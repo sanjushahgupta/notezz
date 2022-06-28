@@ -33,7 +33,7 @@ class SignUp : Fragment() {
 
         binding.Register.setOnClickListener {
             val APIval = retrofitBuilder.create(APIService::class.java)
-            val usermodel = userModel(binding.usernameEditText.text.toString(), binding.passwordEditText.text.toString());
+            val usermodel = userModel(binding.editTextUsername.text.toString(), binding.passwordEditText.text.toString());
              val call = APIval.createUser(usermodel)
             call.enqueue(object : Callback<DefaultUserResponse> {
                 override fun onFailure(call: Call<DefaultUserResponse>, t: Throwable) {

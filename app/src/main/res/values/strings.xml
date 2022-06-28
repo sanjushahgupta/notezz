@@ -1,5 +1,13 @@
 <resources>
-    <string name="app_name">NoteAppViaAPI</string>
+    <string name="app_name">notezz !</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Intro">"Take notes online without worrying about installing, customizing,learning, getting-used-to,
+             paying, security, privacy or anything else basically"</string>
+    <string name="LoginIntro"> "Login below to see all your old notes." </string>
+    <string name="password">Password</string>
+    <string name="note_title">Note title</string>
+    <string name="add_note">Add Note</string>
+    <string name="description">Description</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

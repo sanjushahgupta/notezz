@@ -29,9 +29,13 @@ class LoginIn : Fragment(){
         .baseUrl("https://api.notezz.com")
         .build()
 
-    binding.LoginButton.setOnClickListener {
+        binding.RegisterBtn.setOnClickListener({
+            it.findNavController().navigate(R.id.action_loginIn_to_signUp)
+        })
+
+    binding.LoginButtonBtn.setOnClickListener {
         val APIval = retrofitBuilder.create(APIService::class.java)
-        val usermodel = userModel(binding.usernameEditTextLogin.text.toString(), binding.passwordEditTextLogin.text.toString());
+        val usermodel = userModel(binding.editTextUsername.text.toString(), binding.editTextPassword .text.toString());
         val call = APIval.login(usermodel)
         val sharedPreferences: SharedPreferences = this.activity!!.getSharedPreferences(sharedPrefFile,Context.MODE_PRIVATE)
 

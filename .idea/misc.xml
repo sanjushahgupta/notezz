@@ -3,12 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/fragment_add_edit.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/drawable/boxstyle.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_perm_identity_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_save_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/recyclervieww.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/cardview.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/fragment_add_edit.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_login_in.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/fragment_recycler_view.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_show.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_show_notes.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/fragment_startingpage.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_startingpage.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/recyclerview.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/recyclervieww.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/menu/savemenu.xml" value="0.23020833333333332" />
       </map>
     </option>
   </component>

@@ -3,10 +3,8 @@ package com.example.noteappviaapi
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
@@ -26,21 +24,23 @@ class AddEdit : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
-               val sharedPreferences: SharedPreferences = this.activity!!.getSharedPreferences(sharedPrefFile,
+
+        val sharedPreferences: SharedPreferences = this.activity!!.getSharedPreferences(sharedPrefFile,
                    Context.MODE_PRIVATE)
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_edit, container, false)
+       // setHasOptionsMenu(true)
         val retrofitBuilder = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://api.notezz.com")
             .build()
-               val passedTokenFromLogin = arguments?.getString("SavedToken")
+        val passedTokenFromLogin = arguments?.getString("SavedToken")
 
 
-
-
-        binding.AddButton.setOnClickListener {
+      binding.addbutton.setOnClickListener {
               val APIval = retrofitBuilder.create(APIService::class.java)
-                 val call = APIval.addNote("Bearer $passedTokenFromLogin",noteModel("bodySTRING", "ghv","Active") )
+                 val call = APIval.addNote("Bearer $passedTokenFromLogin",noteModel(binding.editTextTitle.text.toString() , binding.editTextDescription.text.toString() ,"Active") )
 
                call.enqueue(object : Callback<addNoteResponseModel>{
                    override fun onResponse(
@@ -56,7 +56,7 @@ class AddEdit : Fragment() {
                               it.findNavController().navigate(R.id.action_addEdit_to_show,bundles)
 
                           }else{
-                            Toast.makeText(activity, response.code().toString() , Toast.LENGTH_LONG).show()
+                            Toast.makeText(activity,"error is" + response.code().toString() , Toast.LENGTH_LONG).show()
                           }
 
                        }
@@ -66,14 +66,22 @@ class AddEdit : Fragment() {
 
                })
            }
-
         return binding.root
     }
+    //enable options menu in this fragment
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.savemenu,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
 
-
-
-
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Toast.makeText(activity, "Save button clicked", Toast.LENGTH_SHORT).show()
+        return super.onOptionsItemSelected(item)
+    }
 
 }
