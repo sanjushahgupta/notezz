@@ -1,11 +1,12 @@
 package com.example.noteappviaapi
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import retrofit2.Response
 
 
 class RecyclerAdapter( private val mylist: List<addNoteResponseModel>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
@@ -32,11 +33,24 @@ class RecyclerAdapter( private val mylist: List<addNoteResponseModel>) : Recycle
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemTitle.text = mylist[position].title.toString()
         holder.itemDescription.text = mylist[position].body.toString()
+
+
+        holder.itemView.setOnClickListener {
+           // val SavedId =  mylist[position].title.toString()
+           // val SavedTitle =  mylist[position].title.toString()
+            //val bundle = bundleOf("SavedTitle" to SavedTitle )
+            val bundle = Bundle()
+            bundle.putString("NoteTitle", mylist[position].title.toString())
+            bundle.putString("Notebody", mylist[position].body.toString())
+            bundle.putInt("NoteId",mylist[position].id)
+            it.findNavController().navigate(R.id.action_show_to_addEdit, bundle)
+        }
     }
 
     override fun getItemCount(): Int {
-       return mylist.size
+        return mylist.size
     }
+
 
 
 }

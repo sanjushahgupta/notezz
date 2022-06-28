@@ -35,7 +35,7 @@ class LoginIn : Fragment(){
 
     binding.LoginButtonBtn.setOnClickListener {
         val APIval = retrofitBuilder.create(APIService::class.java)
-        val usermodel = userModel(binding.editTextUsername.text.toString(), binding.editTextPassword .text.toString());
+        val usermodel = userModel(/*binding.editTextUsername.text.toString()*/"sanju", /*binding.editTextPassword .text.toString()*/"2rxbjjbd");
         val call = APIval.login(usermodel)
         val sharedPreferences: SharedPreferences = this.activity!!.getSharedPreferences(sharedPrefFile,Context.MODE_PRIVATE)
 

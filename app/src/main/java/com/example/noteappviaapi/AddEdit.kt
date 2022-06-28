@@ -3,6 +3,7 @@ package com.example.noteappviaapi
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.Editable
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
@@ -17,7 +18,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 private lateinit var binding:FragmentAddEditBinding
-
 class AddEdit : Fragment() {
         private val sharedPrefFile = "kotlinsharedpreference"
 
@@ -35,12 +35,18 @@ class AddEdit : Fragment() {
         val retrofitBuilder = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://api.notezz.com")
             .build()
-        val passedTokenFromLogin = arguments?.getString("SavedToken")
+
+        binding.editTextTitle.setText(arguments!!.getString("NoteTitle"))
+        binding.editTextDescription.setText(arguments!!.getString("Notebody"))
+        val noteid = arguments!!.getInt("NoteId")
+
+       // Toast.makeText(activity,"note added successfully of id" + noteid, Toast.LENGTH_LONG).show()
 
 
       binding.addbutton.setOnClickListener {
+          val passedTokenFromLogin = arguments?.getString("SavedToken")!!
               val APIval = retrofitBuilder.create(APIService::class.java)
-                 val call = APIval.addNote("Bearer $passedTokenFromLogin",noteModel(binding.editTextTitle.text.toString() , binding.editTextDescription.text.toString() ,"Active") )
+            val call = APIval.addNote("Bearer $passedTokenFromLogin",noteModel(/*binding.editTextTitle.text.toString()*/ "Life" , /*binding.editTextDescription.text.toString()*/ "is beautiful" ,"Active") )
 
                call.enqueue(object : Callback<addNoteResponseModel>{
                    override fun onResponse(
@@ -69,7 +75,7 @@ class AddEdit : Fragment() {
         return binding.root
     }
     //enable options menu in this fragment
-    override fun onCreate(savedInstanceState: Bundle?) {
+   /* override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
     }
@@ -82,6 +88,6 @@ class AddEdit : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         Toast.makeText(activity, "Save button clicked", Toast.LENGTH_SHORT).show()
         return super.onOptionsItemSelected(item)
-    }
+    }*/
 
 }

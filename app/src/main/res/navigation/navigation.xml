@@ -41,5 +41,20 @@
     <fragment
         android:id="@+id/show"
         android:name="com.example.noteappviaapi.Show"
-        android:label="Show" />
+        android:label="Show" >
+        <action
+            android:id="@+id/action_show_to_addEdit"
+            app:destination="@id/addEdit" />
+        <action
+            android:id="@+id/action_show_to_details"
+            app:destination="@id/details" />
+    </fragment>
+    <fragment
+        android:id="@+id/details"
+        android:name="com.example.noteappviaapi.details"
+        android:label="details" >
+        <action
+            android:id="@+id/action_details_to_addEdit"
+            app:destination="@id/addEdit" />
+    </fragment>
 </navigation>

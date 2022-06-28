@@ -4,22 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/addEditXMl"
+        android:id="@+id/EditXMl"
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-       >
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="25dp">
 
 
         <Button
-            android:id="@+id/addbutton"
-            android:layout_width="60dp"
-            android:layout_height="42dp"
-            android:drawableLeft="@drawable/ic_baseline_save_24"
+            android:id="@+id/updatebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="update"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.98"
             app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/blue"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteY="-6dp" />
 
