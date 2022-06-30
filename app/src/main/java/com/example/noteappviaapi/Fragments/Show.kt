@@ -1,4 +1,4 @@
-package com.example.noteappviaapi
+package com.example.noteappviaapi.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.noteappviaapi.APIService
+import com.example.noteappviaapi.Model.addNoteResponseModel
+import com.example.noteappviaapi.R
+import com.example.noteappviaapi.RecyclerAdapter
 import com.example.noteappviaapi.databinding.FragmentShowBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,13 +31,17 @@ class Show : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_show, container, false)
+
         val retrofitBuilder = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://api.notezz.com")
             .build()
-         val passedTokenFromAdd = arguments?.getString("UserToken")
 
+
+        val created =arguments!!.getString("Created")
+        val Updated = arguments!!.getString("Updated")
         val APIval = retrofitBuilder.create(APIService::class.java)
-       val call = APIval.ShowNote("Bearer $passedTokenFromAdd" )
+        val passedTokenFromAdd = arguments!!.getString("SavedToken")!!
+        val call = APIval.ShowNote("Bearer $passedTokenFromAdd" )
 
        call.enqueue(object:Callback<List<addNoteResponseModel>>{
             override fun onResponse(call: Call<List<addNoteResponseModel>>, response: Response<List<addNoteResponseModel>>) {
@@ -47,9 +53,13 @@ class Show : Fragment() {
                         // RecyclerView behavior
                         layoutManager = LinearLayoutManager(activity)
                         // set the custom adapter to the RecyclerView
-                        adapter = response.body()?.let { RecyclerAdapter(it) }
-
+                        adapter = response.body()?.let { RecyclerAdapter(it,"$passedTokenFromAdd","$created","$Updated") }
                     }
+                    Toast.makeText(
+                        activity,
+                        "response code is : " + response.code().toString(),
+                        Toast.LENGTH_LONG
+                    ).show();
                 }else{
                     Toast.makeText(
                         activity,
@@ -70,6 +80,7 @@ class Show : Fragment() {
         return binding.root
     }
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(itemView, savedInstanceState)
 
     }

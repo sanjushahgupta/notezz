@@ -1,5 +1,6 @@
 package com.example.noteappviaapi
 
+import com.example.noteappviaapi.Model.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -18,5 +19,11 @@ fun addNote(@Header("Authorization")token: String, @Body noteModel: noteModel): 
 
  @GET("/notes")
   fun ShowNote(@Header("Authorization")token: String): Call<List<addNoteResponseModel>>
+
+  @PATCH("/notes/{id}")
+  fun UpdateNote(@Header("Authorization")token: String,@Path(value="id") id: Int, @Body updateModel: updateModel): Call<updateModel>
+
+  @DELETE("/notes/69785")
+  fun DeleteNote(@Header("Authorization")token: String)
 
 }

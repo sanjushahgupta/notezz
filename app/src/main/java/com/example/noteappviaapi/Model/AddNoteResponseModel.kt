@@ -1,4 +1,4 @@
-package com.example.noteappviaapi
+package com.example.noteappviaapi.Model
 
 data class addNoteResponseModel(val body: String, val title : String,
                                 val status:String, val userId: Int,

@@ -1,4 +1,4 @@
-package com.example.noteappviaapi
+package com.example.noteappviaapi.Fragments
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.example.noteappviaapi.APIService
+import com.example.noteappviaapi.Model.DefaultUserResponse
+import com.example.noteappviaapi.Model.userModel
+import com.example.noteappviaapi.MyErrorMessage
+import com.example.noteappviaapi.R
 import com.example.noteappviaapi.databinding.FragmentSignUpBinding
 import com.google.gson.Gson
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

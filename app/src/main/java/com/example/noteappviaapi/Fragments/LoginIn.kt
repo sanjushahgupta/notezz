@@ -1,4 +1,4 @@
-package com.example.noteappviaapi
+package com.example.noteappviaapi.Fragments
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -12,6 +12,11 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.example.noteappviaapi.APIService
+import com.example.noteappviaapi.Model.DefaultUserResponse
+import com.example.noteappviaapi.Model.userModel
+import com.example.noteappviaapi.MyErrorMessage
+import com.example.noteappviaapi.R
 import com.example.noteappviaapi.databinding.FragmentLoginInBinding
 import com.google.gson.Gson
 import retrofit2.*

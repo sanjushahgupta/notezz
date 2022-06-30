@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/startingpage"
-        android:name="com.example.noteappviaapi.Startingpage"
+        android:name="com.example.noteappviaapi.Fragments.Startingpage"
         android:label="Startingpage" >
         <action
             android:id="@+id/action_startingpage_to_signUp"
@@ -15,13 +15,15 @@
             android:id="@+id/action_startingpage_to_loginIn"
             app:destination="@id/loginIn" />
     </fragment>
+
     <fragment
         android:id="@+id/signUp"
-        android:name="com.example.noteappviaapi.SignUp"
+        android:name="com.example.noteappviaapi.Fragments.SignUp"
         android:label="SignUp" />
+
     <fragment
         android:id="@+id/loginIn"
-        android:name="com.example.noteappviaapi.LoginIn"
+        android:name="com.example.noteappviaapi.Fragments.LoginIn"
         android:label="LoginIn" >
         <action
             android:id="@+id/action_loginIn_to_addEdit"
@@ -30,31 +32,23 @@
             android:id="@+id/action_loginIn_to_signUp"
             app:destination="@id/signUp" />
     </fragment>
+
     <fragment
         android:id="@+id/addEdit"
-        android:name="com.example.noteappviaapi.AddEdit"
+        android:name="com.example.noteappviaapi.Fragments.AddEdit"
         android:label="AddEdit" >
         <action
             android:id="@+id/action_addEdit_to_show"
             app:destination="@id/show" />
     </fragment>
+
     <fragment
         android:id="@+id/show"
-        android:name="com.example.noteappviaapi.Show"
+        android:name="com.example.noteappviaapi.Fragments.Show"
         android:label="Show" >
         <action
             android:id="@+id/action_show_to_addEdit"
             app:destination="@id/addEdit" />
-        <action
-            android:id="@+id/action_show_to_details"
-            app:destination="@id/details" />
     </fragment>
-    <fragment
-        android:id="@+id/details"
-        android:name="com.example.noteappviaapi.details"
-        android:label="details" >
-        <action
-            android:id="@+id/action_details_to_addEdit"
-            app:destination="@id/addEdit" />
-    </fragment>
+
 </navigation>
