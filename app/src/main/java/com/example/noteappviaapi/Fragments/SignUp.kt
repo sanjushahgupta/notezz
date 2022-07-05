@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.noteappviaapi.APIService
 import com.example.noteappviaapi.Model.DefaultUserResponse
 import com.example.noteappviaapi.Model.userModel
-import com.example.noteappviaapi.MyErrorMessage
+import com.example.noteappviaapi.Model.MyErrorMessageModel
 import com.example.noteappviaapi.R
 import com.example.noteappviaapi.databinding.FragmentSignUpBinding
 import com.google.gson.Gson
@@ -56,7 +56,7 @@ class SignUp : Fragment() {
                     }else{
                         val message =  Gson().fromJson(
                             response.errorBody()!!.charStream(),
-                            MyErrorMessage::class.java)
+                            MyErrorMessageModel::class.java)
 
                         Toast.makeText(
                             activity,

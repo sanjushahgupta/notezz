@@ -23,7 +23,7 @@ fun addNote(@Header("Authorization")token: String, @Body noteModel: noteModel): 
   @PATCH("/notes/{id}")
   fun UpdateNote(@Header("Authorization")token: String,@Path(value="id") id: Int, @Body updateModel: updateModel): Call<updateModel>
 
-  @DELETE("/notes/69785")
-  fun DeleteNote(@Header("Authorization")token: String)
+  @DELETE("/notes/{id}")
+  fun DeleteNote(@Header("Authorization")token: String,@Path(value="id") id: Int):Call<StatusModel>
 
 }

@@ -36,11 +36,11 @@ class Show : Fragment() {
             .baseUrl("https://api.notezz.com")
             .build()
 
-
         val created =arguments!!.getString("Created")
         val Updated = arguments!!.getString("Updated")
         val APIval = retrofitBuilder.create(APIService::class.java)
         val passedTokenFromAdd = arguments!!.getString("SavedToken")!!
+        val id = arguments!!.getInt("id")!!
         val call = APIval.ShowNote("Bearer $passedTokenFromAdd" )
 
        call.enqueue(object:Callback<List<addNoteResponseModel>>{
@@ -55,11 +55,6 @@ class Show : Fragment() {
                         // set the custom adapter to the RecyclerView
                         adapter = response.body()?.let { RecyclerAdapter(it,"$passedTokenFromAdd","$created","$Updated") }
                     }
-                    Toast.makeText(
-                        activity,
-                        "response code is : " + response.code().toString(),
-                        Toast.LENGTH_LONG
-                    ).show();
                 }else{
                     Toast.makeText(
                         activity,
@@ -77,6 +72,7 @@ class Show : Fragment() {
                 ).show()
             }
         })
+
         return binding.root
     }
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {

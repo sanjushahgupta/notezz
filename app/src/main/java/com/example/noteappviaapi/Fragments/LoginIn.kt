@@ -15,7 +15,7 @@ import androidx.navigation.findNavController
 import com.example.noteappviaapi.APIService
 import com.example.noteappviaapi.Model.DefaultUserResponse
 import com.example.noteappviaapi.Model.userModel
-import com.example.noteappviaapi.MyErrorMessage
+import com.example.noteappviaapi.Model.MyErrorMessageModel
 import com.example.noteappviaapi.R
 import com.example.noteappviaapi.databinding.FragmentLoginInBinding
 import com.google.gson.Gson
@@ -64,7 +64,7 @@ class LoginIn : Fragment(){
                     val gson = Gson()
                     val message = gson.fromJson(
                         response.errorBody()!!.charStream(),
-                        MyErrorMessage::class.java)
+                        MyErrorMessageModel::class.java)
 
                     Toast.makeText(
                         activity,

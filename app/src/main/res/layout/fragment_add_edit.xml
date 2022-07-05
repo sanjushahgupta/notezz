@@ -10,7 +10,6 @@
         android:layout_height="match_parent"
        >
 
-
         <Button
             android:id="@+id/addbutton"
             android:layout_width="60dp"
@@ -23,19 +22,6 @@
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteY="-6dp" />
 
-        <Button
-            android:id="@+id/Updatbutton"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:backgroundTint="@color/white"
-            android:text="Update"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/addbutton"
-            app:layout_constraintHorizontal_bias="0.962"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
         <EditText
             android:id="@+id/editTextTitle"
             android:layout_width="match_parent"
@@ -45,7 +31,6 @@
             android:layout_marginRight="6dp"
             android:layout_marginBottom="4dp"
             android:background="@drawable/boxstyle"
-
             android:hint="Title"
             android:paddingLeft="8dp"
             android:paddingBottom="6dp"
