@@ -14,16 +14,19 @@ import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import com.example.noteappviaapi.APIService
+import com.example.noteappviaapi.MainActivity
 import com.example.noteappviaapi.Model.addNoteResponseModel
 import com.example.noteappviaapi.Model.noteModel
 import com.example.noteappviaapi.Model.updateModel
 import com.example.noteappviaapi.R
 import com.example.noteappviaapi.databinding.FragmentAddEditBinding
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 
 private lateinit var binding:FragmentAddEditBinding
@@ -43,18 +46,21 @@ class AddEdit : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_edit, container, false)
         // setHasOptionsMenu(true)
-        val retrofitBuilder = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://api.notezz.com")
-            .build()
+
+
 
         binding.editTextTitle.setText(arguments!!.getString("NoteTitle"))
         binding.editTextDescription.setText(arguments!!.getString("Notebody"))
 
         val id = arguments!!.getInt("id")!!
 
+        binding.Allnotes.setOnClickListener({
+            it.findNavController().navigate(R.id.action_addEdit_to_show)
+        })
+
         binding.addbutton.setOnClickListener {
                 if (id == 0) {
-                    val APIval = retrofitBuilder.create(APIService::class.java)
+                    val APIval = MainActivity().APIClient().create(APIService::class.java)
                     var passedTokenFromLogin: String? = arguments!!.getString("SavedToken")
                     val call = APIval.addNote(
                         "Bearer $passedTokenFromLogin",
@@ -111,7 +117,7 @@ class AddEdit : Fragment() {
                     val passedTokenFromRecyclerAndShow = arguments!!.getString("SavedToken")!!
 
 
-                    val APIval = retrofitBuilder.create(APIService::class.java)
+                    val APIval = MainActivity().APIClient().create(APIService::class.java)
                     val call = APIval.UpdateNote(
                         "Bearer $passedTokenFromRecyclerAndShow",
                         id,
@@ -166,7 +172,7 @@ class AddEdit : Fragment() {
         return binding.root
     }
     //enable options menu in this fragment
-    override fun onCreate(savedInstanceState: Bundle?) {
+  /* override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
     }
@@ -181,6 +187,6 @@ class AddEdit : Fragment() {
       //  navController.navigate(R.id.show)
         Toast.makeText(activity, "All notes button clicked", Toast.LENGTH_SHORT).show()
         return super.onOptionsItemSelected(item)
-    }
+    }*/
 
 }

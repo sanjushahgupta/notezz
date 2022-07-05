@@ -24,6 +24,6 @@ fun addNote(@Header("Authorization")token: String, @Body noteModel: noteModel): 
   fun UpdateNote(@Header("Authorization")token: String,@Path(value="id") id: Int, @Body updateModel: updateModel): Call<updateModel>
 
   @DELETE("/notes/{id}")
-  fun DeleteNote(@Header("Authorization")token: String,@Path(value="id") id: Int):Call<StatusModel>
+  fun DeleteNote(@Header("Authorization")token: String,@Path(value="id") id: Int):Call<Void>
 
 }

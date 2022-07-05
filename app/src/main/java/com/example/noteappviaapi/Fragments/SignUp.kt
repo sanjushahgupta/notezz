@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.noteappviaapi.APIService
+import com.example.noteappviaapi.MainActivity
 import com.example.noteappviaapi.Model.DefaultUserResponse
 import com.example.noteappviaapi.Model.userModel
 import com.example.noteappviaapi.Model.MyErrorMessageModel
@@ -28,12 +29,10 @@ class SignUp : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_up, container, false)
-        val retrofitBuilder = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://api.notezz.com")
-            .build()
+
 
         binding.Register.setOnClickListener {
-            val APIval = retrofitBuilder.create(APIService::class.java)
+            val APIval = MainActivity().APIClient().create(APIService::class.java)
             val usermodel = userModel(binding.editTextUsername.text.toString(), binding.passwordEditText.text.toString());
              val call = APIval.createUser(usermodel)
             call.enqueue(object : Callback<DefaultUserResponse> {

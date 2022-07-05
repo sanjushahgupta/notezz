@@ -1,15 +1,17 @@
 package com.example.noteappviaapi.Fragments
 
+import android.accessibilityservice.GestureDescription
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteappviaapi.APIService
+import com.example.noteappviaapi.MainActivity
 import com.example.noteappviaapi.Model.addNoteResponseModel
 import com.example.noteappviaapi.R
 import com.example.noteappviaapi.RecyclerAdapter
@@ -19,6 +21,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
+
 
 private lateinit var binding:FragmentShowBinding
 class Show : Fragment() {
@@ -31,16 +35,13 @@ class Show : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_show, container, false)
-
-        val retrofitBuilder = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://api.notezz.com")
-            .build()
+     
 
         val created =arguments!!.getString("Created")
         val Updated = arguments!!.getString("Updated")
-        val APIval = retrofitBuilder.create(APIService::class.java)
+        val APIval = MainActivity().APIClient().create(APIService::class.java)
         val passedTokenFromAdd = arguments!!.getString("SavedToken")!!
-        val id = arguments!!.getInt("id")!!
+        val id = arguments!!.getInt("id")
         val call = APIval.ShowNote("Bearer $passedTokenFromAdd" )
 
        call.enqueue(object:Callback<List<addNoteResponseModel>>{
@@ -80,4 +81,6 @@ class Show : Fragment() {
         super.onViewCreated(itemView, savedInstanceState)
 
     }
+
+
 }
