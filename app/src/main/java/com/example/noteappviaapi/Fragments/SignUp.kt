@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.noteappviaapi.APIService
 import com.example.noteappviaapi.MainActivity
 import com.example.noteappviaapi.Model.DefaultUserResponse
@@ -67,6 +68,11 @@ class SignUp : Fragment() {
                 }
             })
         }
+
+        binding.Login.setOnClickListener({
+           it.findNavController().navigate(R.id.action_signUp_to_loginIn)
+        })
+
    return binding.root
     }
 }

@@ -26,10 +26,12 @@ class RecyclerAdapter(
 ) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
 
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var itemTitle: TextView
         var itemDescription: TextView
         var deletebtn: Button
+
 
         init {
             itemTitle = itemView.findViewById(R.id.titleTextview)
@@ -47,7 +49,9 @@ class RecyclerAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemTitle.text = mylist[position].title.toString()
-        holder.itemDescription.text = mylist[position].body.toString()
+            holder.itemDescription.text = mylist[position].body.toString()
+
+
 
         holder.itemView.setOnClickListener {
             // val SavedId =  mylist[position].title.toString()
@@ -101,12 +105,15 @@ class RecyclerAdapter(
 
 
         }
+
     }
+
 
     override fun getItemCount(): Int {
 
         return mylist.size
     }
+
 
 
 }

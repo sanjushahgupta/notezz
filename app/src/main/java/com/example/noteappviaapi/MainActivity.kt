@@ -4,6 +4,7 @@ import android.icu.util.TimeUnit
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentTransaction
 import com.example.noteappviaapi.databinding.ActivityMainBinding
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -29,5 +30,9 @@ class MainActivity : AppCompatActivity() {
             .build()
         return retrofitBuilder;
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

@@ -19,18 +19,22 @@
     <fragment
         android:id="@+id/signUp"
         android:name="com.example.noteappviaapi.Fragments.SignUp"
-        android:label="SignUp" />
+        android:label="SignUp" >
+        <action
+            android:id="@+id/action_signUp_to_loginIn"
+            app:destination="@id/loginIn" />
+    </fragment>
 
     <fragment
         android:id="@+id/loginIn"
         android:name="com.example.noteappviaapi.Fragments.LoginIn"
         android:label="LoginIn" >
         <action
-            android:id="@+id/action_loginIn_to_addEdit"
-            app:destination="@id/addEdit" />
-        <action
             android:id="@+id/action_loginIn_to_signUp"
             app:destination="@id/signUp" />
+        <action
+            android:id="@+id/action_loginIn_to_show"
+            app:destination="@id/show" />
     </fragment>
 
     <fragment

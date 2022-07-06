@@ -61,7 +61,7 @@ class LoginIn : Fragment(){
                     val SavedToken = response.body()!!.token
                     val bundle = bundleOf("SavedToken" to SavedToken )
 
-                    it.findNavController().navigate(R.id.action_loginIn_to_addEdit, bundle)
+                    it.findNavController().navigate(R.id.action_loginIn_to_show, bundle)
 
                 }else{
                     val gson = Gson()
@@ -80,4 +80,7 @@ class LoginIn : Fragment(){
     }
     return binding.root
 }
+
+
+
 }
