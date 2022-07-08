@@ -15,7 +15,7 @@ private lateinit var binding : ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding  =  DataBindingUtil.setContentView(this,R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
     }
 
     fun APIClient(): Retrofit {
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             .readTimeout(60, java.util.concurrent.TimeUnit.SECONDS)
             .writeTimeout(60, java.util.concurrent.TimeUnit.SECONDS)
             .build()
-        val retrofitBuilder =  Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
+        val retrofitBuilder = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://api.notezz.com")
             .client(okHttpClient)
             .build()
@@ -32,7 +32,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-    }
 }

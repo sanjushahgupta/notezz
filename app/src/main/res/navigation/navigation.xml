@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_loginIn_to_show"
             app:destination="@id/show" />
+        <action
+            android:id="@+id/action_loginIn_to_requestLoginLink"
+            app:destination="@id/requestLoginLink" />
     </fragment>
 
     <fragment
@@ -44,6 +47,12 @@
         <action
             android:id="@+id/action_addEdit_to_show"
             app:destination="@id/show" />
+        <action
+            android:id="@+id/action_addEdit_to_startingpage"
+            app:destination="@id/startingpage" />
+        <action
+            android:id="@+id/action_addEdit_to_account"
+            app:destination="@id/account" />
     </fragment>
 
     <fragment
@@ -53,6 +62,18 @@
         <action
             android:id="@+id/action_show_to_addEdit"
             app:destination="@id/addEdit" />
+    </fragment>
+    <fragment
+        android:id="@+id/account"
+        android:name="com.example.noteappviaapi.Fragments.Account"
+        android:label="Account" />
+    <fragment
+        android:id="@+id/requestLoginLink"
+        android:name="com.example.noteappviaapi.Fragments.RequestLoginLink"
+        android:label="RequestLoginLink" >
+        <action
+            android:id="@+id/action_requestLoginLink_to_loginIn"
+            app:destination="@id/loginIn" />
     </fragment>
 
 </navigation>

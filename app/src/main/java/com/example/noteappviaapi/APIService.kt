@@ -26,4 +26,14 @@ fun addNote(@Header("Authorization")token: String, @Body noteModel: noteModel): 
   @DELETE("/notes/{id}")
   fun DeleteNote(@Header("Authorization")token: String,@Path(value="id") id: Int):Call<Void>
 
+ @POST("/auth/update")
+ fun UpdateUserAccount(@Header("Authorization")token: String, @Body updateAccountRequestModel: UpdateAccountRequestModel ): Call<Void>
+
+    @POST("/auth/update")
+    fun UpdateUserAccountusernamenadpassword(@Header("Authorization")token: String, @Body updateEmail: UpdateEmail ): Call<Void>
+
+
+  @POST("/auth/send-login-link")
+    fun Onetimeloginlink(@Body forgotPasswordRequestModel: ForgotPasswordRequestModel): Call<Void>
+
 }

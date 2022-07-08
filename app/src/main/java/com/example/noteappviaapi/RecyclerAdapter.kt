@@ -22,7 +22,8 @@ class RecyclerAdapter(
     private val mylist: List<addNoteResponseModel>,
     val Token: String,
     val Created: String,
-    val Updated: String
+    val Updated: String,
+    val AccountUsername: String
 ) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
 
@@ -48,8 +49,11 @@ class RecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         holder.itemTitle.text = mylist[position].title.toString()
-            holder.itemDescription.text = mylist[position].body.toString()
+        holder.itemDescription.text = mylist[position].body.toString()
+
+
 
 
 
@@ -65,6 +69,7 @@ class RecyclerAdapter(
             bundle.putString("SavedToken", Token)
             bundle.putString("Created", Created)
             bundle.putString("Updated", Updated)
+            bundle.putString("AccountUsername",  AccountUsername)
 
             it.findNavController().navigate(R.id.action_show_to_addEdit, bundle)
         }

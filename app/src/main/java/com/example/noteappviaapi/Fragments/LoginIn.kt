@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
@@ -33,54 +34,71 @@ class LoginIn : Fragment(){
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
 ): View? {
-   
-    binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login_in, container, false)
-    
 
+   
+         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login_in, container, false)
         binding.RegisterBtn.setOnClickListener({
             it.findNavController().navigate(R.id.action_loginIn_to_signUp)
         })
+        binding.ForgotPassword.setOnClickListener({
 
+            it.findNavController().navigate(R.id.action_loginIn_to_requestLoginLink)
+            })
     binding.LoginButtonBtn.setOnClickListener {
-        val APIval =MainActivity().APIClient().create(APIService::class.java)
-        val usermodel = userModel(/*binding.editTextUsername.text.toString()*/"sanju", /*binding.editTextPassword .text.toString()*/"2rxbjjbd");
-        val call = APIval.login(usermodel)
-        val sharedPreferences: SharedPreferences = this.activity!!.getSharedPreferences(sharedPrefFile,Context.MODE_PRIVATE)
+        val APIval = MainActivity().APIClient().create(APIService::class.java)
+        val EnterUsername =/* binding.editTextUsername.text.toString()*/ "sanju"
+        val EnterPassword = /*binding.editTextPassword.text.toString()*/ "mankind"
 
-        call.enqueue(object : Callback<DefaultUserResponse> {
-            override fun onFailure(call: Call<DefaultUserResponse>, t: Throwable) {
-                Log.d("msggo", t.toString());
-                Toast.makeText(activity, t.toString(), Toast.LENGTH_LONG).show()
-            }
+        if (EnterUsername.isEmpty() || EnterPassword.isEmpty()) {
+            Toast.makeText(activity, "Please fill all fields.", Toast.LENGTH_LONG).show()
+        } else {
 
-            override fun onResponse(
-                call: Call<DefaultUserResponse>,
-                response: Response<DefaultUserResponse>
-            ) {
-                if (response.isSuccessful){
-                    val SavedToken = response.body()!!.token
-                    val bundle = bundleOf("SavedToken" to SavedToken )
+            val usermodel = userModel(EnterUsername, EnterPassword);
+            val call = APIval.login(usermodel)
+            val sharedPreferences: SharedPreferences =
+                this.activity!!.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
 
-                    it.findNavController().navigate(R.id.action_loginIn_to_show, bundle)
-
-                }else{
-                    val gson = Gson()
-                    val message = gson.fromJson(
-                        response.errorBody()!!.charStream(),
-                        MyErrorMessageModel::class.java)
-
-                    Toast.makeText(
-                        activity,
-                        message.message,
-                        Toast.LENGTH_LONG
-                    ).show();
+            call.enqueue(object : Callback<DefaultUserResponse> {
+                override fun onFailure(call: Call<DefaultUserResponse>, t: Throwable) {
+                    Log.d("msggo", t.toString());
+                    Toast.makeText(activity, t.toString(), Toast.LENGTH_LONG).show()
                 }
-            }
-        })
+
+                override fun onResponse(
+                    call: Call<DefaultUserResponse>,
+                    response: Response<DefaultUserResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val SavedToken = response.body()!!.token
+                        val AccountUsername = EnterUsername.toString()
+                        val bundle = bundleOf("SavedToken" to SavedToken, "AccountUsername" to AccountUsername)
+
+
+                        it.findNavController().navigate(R.id.action_loginIn_to_show, bundle)
+
+                    } else {
+                        val gson = Gson()
+                        val message = gson.fromJson(
+                            response.errorBody()!!.charStream(),
+                            MyErrorMessageModel::class.java
+                        )
+
+                        Toast.makeText(
+                            activity,
+                            message.message,
+                            Toast.LENGTH_LONG
+                        ).show();
+                    }
+                }
+            })
+        }
     }
     return binding.root
 }
 
-
+    fun hideKeyboard(){
+        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view?.windowToken, 0)
+    }
 
 }

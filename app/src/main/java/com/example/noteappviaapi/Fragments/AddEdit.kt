@@ -48,13 +48,17 @@ class AddEdit : Fragment() {
 
                 binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_edit, container, false)
                 setHasOptionsMenu(true)
-                binding.editTextTitle.setText(arguments!!.getString("NoteTitle"))
-                binding.editTextDescription.setText(arguments!!.getString("Notebody"))
+                binding.editTextTitle.setText(arguments?.getString("NoteTitle"))
+                binding.editTextDescription.setText(arguments?.getString("Notebody"))
 
-                val id = arguments!!.getInt("id")!!
+                var id = arguments?.getInt("id")!!
 
                 binding.addbutton.setOnClickListener {
-                    if (id == 0) {
+                    if (binding.editTextTitle.text.isEmpty() && binding.editTextDescription.text.isEmpty()) {
+                        Toast.makeText(activity,"Empty Fields !", Toast.LENGTH_LONG).show()
+
+                    }else{
+                        if (id == 0) {
                         val APIval = MainActivity().APIClient().create(APIService::class.java)
                         var passedTokenFromLogin: String? = arguments!!.getString("SavedToken")
                         val call = APIval.addNote(
@@ -71,17 +75,18 @@ class AddEdit : Fragment() {
                                 response: Response<addNoteResponseModel>
                             ) {
                                 if (response.isSuccessful) {
-                                    //  Toast.makeText(activity,"note added successfully of userid" +response.body()!!.userId.toString(), Toast.LENGTH_LONG).show()
+                                     Toast.makeText(activity,"note added successfully of userid" +response.body()!!.userId.toString(), Toast.LENGTH_LONG).show()
 
                                     val SavedToken = passedTokenFromLogin.toString()
                                     var Created = response.body()!!.created.toString()
                                     var Updated = response.body()!!.updated.toString()
                                     var id = response.body()!!.id.toInt()
+                                    var AccountUsername =  arguments!!.getString("AccountUsername")
                                     val bundles =
                                         bundleOf(
                                             "SavedToken" to SavedToken,
                                             "Created" to Created,
-                                            "id" to id
+                                            "id" to id, "AccountUsername" to AccountUsername
                                         )
 
                                     it.findNavController()
@@ -109,6 +114,7 @@ class AddEdit : Fragment() {
                         val noteBody = arguments!!.getString("Notebody")!!
                         val noteCreated = arguments!!.getString("Created")!!
                         val noteUpdated = arguments!!.getString("Updated")!!
+                            val AccountUsername = arguments!!.getString("AccountUsername")!!
                         val passedTokenFromRecyclerAndShow = arguments!!.getString("SavedToken")!!
 
 
@@ -139,7 +145,8 @@ class AddEdit : Fragment() {
                                         "SavedToken" to passedTokenFromRecyclerAndShow,
                                         "Created" to noteCreated,
                                         "Updated" to noteUpdated,
-                                        "id" to id
+                                        "id" to id,
+                                        "AccountUsername" to AccountUsername
                                     )
                                     it.findNavController()
                                         .navigate(R.id.action_addEdit_to_show, bundles)
@@ -156,13 +163,18 @@ class AddEdit : Fragment() {
                             }
 
                             override fun onFailure(call: Call<updateModel>, t: Throwable) {
-                                Toast.makeText(activity, "error T " + t.toString(), Toast.LENGTH_LONG)
+                                Toast.makeText(
+                                    activity,
+                                    "error T " + t.toString(),
+                                    Toast.LENGTH_LONG
+                                )
                                     .show()
                             }
 
                         })
 
                     }
+                }
                 }
                 return binding.root
             }
@@ -181,7 +193,19 @@ class AddEdit : Fragment() {
         val id = item!!.itemId
 
         if (id == R.id.logout){
-            exit(0)
+            val navController: NavController = view?.let { Navigation.findNavController(this.view!!) }!!
+
+            navController.navigate(R.id.action_addEdit_to_startingpage)
+
+        }
+        if(id == R.id.Setting){
+
+            var AccountUsername: String? = arguments!!.getString("AccountUsername")
+            var SavedToken: String? = arguments!!.getString("SavedToken")
+            val bundle = bundleOf("AccountUsername" to AccountUsername, "SavedToken" to SavedToken )
+            val navController: NavController = view?.let { Navigation.findNavController(this.view!!) }!!
+
+            navController.navigate(R.id.action_addEdit_to_account, bundle)
         }
         return super.onOptionsItemSelected(item)
     }

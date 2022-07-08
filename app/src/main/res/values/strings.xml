@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">notezz !</string>
+    <string name="app_name">notezz!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Intro">"Take notes online without worrying about installing, customizing,learning, getting-used-to,
              paying, security, privacy or anything else basically"</string>
@@ -11,4 +11,44 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_notes">Add notes</string>
+    <string name="email">Email</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="we_ll_never_share_your_email_with_anyone_else_it_will_only_be_used_for_sending_you_login_link_if_you_ever_forget_your_password">We\'ll never share your email with anyone else. It will only be used for sending you login link if you ever forget your password.</string>
+    <string name="username">Username</string>
+    <string name="enter_new_username">Enter new username</string>
+    <string name="password1">Password</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="password_confirmation">Password confirmation</string>
+    <string name="confirm_new_password">Confirm new password</string>
+    <string name="update_account">Update Account</string>
+    <string name="delete_account_and_all_notes_forever">Delete Account and All Notes Forever</string>
+    <string name="update_account_1">Update Account</string>
+    <string name="update_your_account_settings_below">Update your account settings below.</string>
+    <string name="title">Title</string>
+    <string name="login">Login</string>
+    <string name="username1">Username</string>
+    <string name="usernameeditxt">Username</string>
+    <string name="passwordtxt">Password</string>
+    <string name="passwordedittxt">Password</string>
+    <string name="logintxt">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="register">Register</string>
+    <string name="registertxt">Register</string>
+    <string name="register_below_and_start_taking_notes_in_seconds">Register below and start taking notes in Seconds</string>
+    <string name="usernametxt">Username</string>
+    <string name="enter_usernameedittxt">Enter Username</string>
+    <string name="passwordtxt1">Password</string>
+    <string name="enter_password_editxt">Enter Password</string>
+    <string name="password_confirmation_">Password Confirmation</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register_">Register</string>
+    <string name="login_with_facebook">Login With Facebook</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login_">Login</string>
+    <string name="simple_and_free_note_taking_tool">Simple and free note taking tool</string>
+    <string name="take_notes_online_without_worrying_about_installing_customizing_learning_getting_used_to_paying_security_privacy_or_anything_else_basically">Take notes online without worrying about installing, customizing,learning, getting-used-to,paying, security, privacy or anything else basically.</string>
+    <string name="login__">Login</string>
+    <string name="register__">Register</string>
+    <string name="ForgotPasswordIntro">If you have saved email to your account before, you can request an unique one time login link through this form to access your account in case if you have forgotten your password.</string>
 </resources>

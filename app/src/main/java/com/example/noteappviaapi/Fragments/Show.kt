@@ -35,13 +35,14 @@ class Show : Fragment() {
         })
         binding = DataBindingUtil.inflate(inflater, com.example.noteappviaapi.R.layout.fragment_show, container, false)
         setHasOptionsMenu(true)
-        val created =arguments!!.getString("Created")
-        val Updated = arguments!!.getString("Updated")
+        val created =arguments?.getString("Created")
+        val Updated = arguments?.getString("Updated")
         val APIval = MainActivity().APIClient().create(APIService::class.java)
-        val passedTokenFromLogin = arguments!!.getString("SavedToken")!!
-        val id = arguments!!.getInt("id")
-        val call = APIval.ShowNote("Bearer $passedTokenFromLogin" )
+        val passedTokenFromLogin = arguments?.getString("SavedToken")!!
 
+       val AccountUsername = arguments?.getString("AccountUsername")!!
+      //  val id = arguments?.getInt("id")
+        val call = APIval.ShowNote("Bearer $passedTokenFromLogin" )
        call.enqueue(object:Callback<List<addNoteResponseModel>>{
             override fun onResponse(call: Call<List<addNoteResponseModel>>, response: Response<List<addNoteResponseModel>>) {
 
@@ -51,7 +52,7 @@ class Show : Fragment() {
                         // RecyclerView behavior
                         layoutManager = LinearLayoutManager(activity)
                         // set the custom adapter to the RecyclerView
-                        adapter = response.body()?.let { RecyclerAdapter(it,"$passedTokenFromLogin","$created","$Updated") }
+                        adapter = response.body()?.let { RecyclerAdapter(it,"$passedTokenFromLogin","$created","$Updated","$AccountUsername") }
                     }
                 }else{
                     Toast.makeText(
@@ -92,6 +93,7 @@ class Show : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val passedTokenFromLogin = arguments!!.getString("SavedToken")!!
+        val AccountUsername = arguments?.getString("AccountUsername")!!
         val navController: NavController = view?.let { Navigation.findNavController(this.view!!) }!!
         val bundle = Bundle()
         bundle.putString("NoteTitle","")
@@ -101,6 +103,7 @@ class Show : Fragment() {
         bundle.putString("SavedToken", "$passedTokenFromLogin")
         bundle.putString("Created", "")
         bundle.putString("Updated", "")
+        bundle.putString("AccountUsername",  AccountUsername)
         navController.navigate(R.id.action_show_to_addEdit,bundle)
         return super.onOptionsItemSelected(item)
     }
