@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    tools:context=".Fragments.Privacypolicy">
+
+
+    <TextView
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="PrivacyPolicy" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="We use your personal data to provide and improve the service. By using the service, you agree to the collection and use of information in accordance with this Privacy Policy.
+
+Personal data
+While using our service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to:
+
+Email address
+Usage data
+Usage data
+Usage data is collected automatically when using the service.
+
+Tracking technologies and cookies
+We use Cookies and similar tracking technologies to track the activity on our service and store certain information.
+
+Use of your personal data
+We may use personal data for the following purposes:
+
+To provide and maintain our service, including to monitor the usage of our service.
+To manage your requests: To attend and manage your requests to us.
+We may share and/or transfer your personal information in the following situations:
+
+With service providers: We may share your personal information with service providers to monitor and analyze the use of our service, to contact you.
+For business transfers: We may share or transfer your personal information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.
+For legal requirements: Under certain circumstances, we may be required to disclose your personal data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).
+Security of your personal data
+The security of your personal data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect your personal data, we cannot guarantee its absolute security.
+
+Deletion of your personal data
+All your notes can be deleted once you login to the account. If you wish to have your account deleted as well, please email info@notezz.com with your account details and it will be deleted once it is verified that you are the account owner.
+
+Changes to this Privacy Policy
+You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+
+Contact us
+If you have any questions about this Privacy Policy, you can contact us by email: support@notezz.com" />
+    </ScrollView>
+
+</LinearLayout>
+</layout>

@@ -198,7 +198,7 @@ class AddEdit : Fragment() {
             navController.navigate(R.id.action_addEdit_to_startingpage)
 
         }
-        if(id == R.id.Setting){
+        if(id == R.id.Account){
 
             var AccountUsername: String? = arguments!!.getString("AccountUsername")
             var SavedToken: String? = arguments!!.getString("SavedToken")
@@ -207,9 +207,17 @@ class AddEdit : Fragment() {
 
             navController.navigate(R.id.action_addEdit_to_account, bundle)
         }
+
+        if(id == R.id.AboutUs){
+          val navController: NavController = view?.let { Navigation.findNavController(this.view!!) }!!
+            navController.navigate(R.id.action_addEdit_to_aboutUs)
+        }
+        if(id == R.id.privacypolicy){
+            val navController: NavController = view?.let { Navigation.findNavController(this.view!!) }!!
+            navController.navigate(R.id.privacypolicy)
+        }
         return super.onOptionsItemSelected(item)
     }
 
 
-
-        }
+}

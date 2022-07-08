@@ -1,5 +1,7 @@
 package com.example.noteappviaapi
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +9,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.noteappviaapi.Fragments.Show
 import com.example.noteappviaapi.Model.addNoteResponseModel
-import com.google.android.material.internal.ContextUtils.getActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -54,13 +53,7 @@ class RecyclerAdapter(
         holder.itemDescription.text = mylist[position].body.toString()
 
 
-
-
-
         holder.itemView.setOnClickListener {
-            // val SavedId =  mylist[position].title.toString()
-            // val SavedTitle =  mylist[position].title.toString()
-            //val bundle = bundleOf("SavedTitle" to SavedTitle )
             val bundle = Bundle()
             bundle.putString("NoteTitle", mylist[position].title.toString())
             bundle.putString("Notebody", mylist[position].body.toString())
@@ -76,8 +69,17 @@ class RecyclerAdapter(
 
 
         holder.deletebtn.setOnClickListener {
+           val builder: AlertDialog.Builder = AlertDialog.Builder(it.context)
+
+          builder.setTitle("Confirm")
+           builder.setMessage("Are you sure?")
+
+            builder.setPositiveButton(
+               "YES",
+               DialogInterface.OnClickListener { dialog, which ->
+
             val APIval = MainActivity().APIClient().create(APIService::class.java)
-            APIval.DeleteNote("Bearer $Token", mylist[position].id)
+                APIval.DeleteNote("Bearer $Token", mylist[position].id)
                 .enqueue(object : Callback<Void> {
                     override fun onResponse(
                         call: Call<Void>,
@@ -89,8 +91,6 @@ class RecyclerAdapter(
                                 Toast.LENGTH_LONG
                             ).show()
 
-                          //  it.findNavController().navigate(R.id.show)
-
                         } else {
                             Toast.makeText(
                                 it.context,
@@ -98,8 +98,6 @@ class RecyclerAdapter(
                                 Toast.LENGTH_LONG
                             ).show()
                         }
-
-
                     }
 
                     override fun onFailure(call: Call<Void>, t: Throwable) {
@@ -107,8 +105,14 @@ class RecyclerAdapter(
                         Toast.makeText(it.context, t.toString(), Toast.LENGTH_LONG).show()
                     }
                 })
-
-
+              })
+           builder.setNegativeButton(
+                "NO",
+                DialogInterface.OnClickListener { dialog, which -> // Do nothing
+                    dialog.dismiss()
+                })
+        val alert: AlertDialog = builder.create()
+        alert.show()
         }
 
     }

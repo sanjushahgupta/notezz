@@ -36,4 +36,7 @@ fun addNote(@Header("Authorization")token: String, @Body noteModel: noteModel): 
   @POST("/auth/send-login-link")
     fun Onetimeloginlink(@Body forgotPasswordRequestModel: ForgotPasswordRequestModel): Call<Void>
 
+    @DELETE("/auth/delete")
+    fun DeleteAccount(@Header("Authorization")token: String) : Call<Void>
+
 }

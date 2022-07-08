@@ -53,6 +53,9 @@
         <action
             android:id="@+id/action_addEdit_to_account"
             app:destination="@id/account" />
+        <action
+            android:id="@+id/action_addEdit_to_aboutUs"
+            app:destination="@id/aboutUs" />
     </fragment>
 
     <fragment
@@ -75,5 +78,13 @@
             android:id="@+id/action_requestLoginLink_to_loginIn"
             app:destination="@id/loginIn" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutUs"
+        android:name="com.example.noteappviaapi.Fragments.AboutUs"
+        android:label="AboutUs" />
+    <fragment
+        android:id="@+id/privacypolicy"
+        android:name="com.example.noteappviaapi.Fragments.Privacypolicy"
+        android:label="Privacypolicy" />
 
 </navigation>

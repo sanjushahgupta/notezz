@@ -1,21 +1,24 @@
 package com.example.noteappviaapi.Fragments
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.noteappviaapi.APIService
 import com.example.noteappviaapi.MainActivity
 import com.example.noteappviaapi.Model.*
 import com.example.noteappviaapi.R
 import com.example.noteappviaapi.databinding.FragmentAccountBinding
-import com.example.noteappviaapi.databinding.FragmentLoginInBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 private lateinit var binding:FragmentAccountBinding
 class Account : Fragment() {
@@ -134,6 +137,62 @@ class Account : Fragment() {
 
         }
 
+
+
+
+        binding.DeleteAccount.setOnClickListener {
+            val builder: AlertDialog.Builder = AlertDialog.Builder(it.context)
+
+            builder.setTitle("Confirm")
+            builder.setMessage("Are you sure?")
+
+            builder.setPositiveButton(
+                "YES",
+                DialogInterface.OnClickListener { dialog, which ->
+                    val APIval = MainActivity().APIClient().create(APIService::class.java)
+                    val call = APIval.DeleteAccount(
+                        "Bearer $SavedToken",
+
+                        )
+                    call.enqueue(object : Callback<Void>{
+                        override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                            if (response.isSuccessful) {
+                                Toast.makeText(
+                                    activity,
+                                    "Account deleted successfully.",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                                it.findNavController().navigate(R.id.startingpage)
+                            }else{
+                                Toast.makeText(
+                                    activity,
+                                    "Sorry, Unable to delete account. Try again",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                        }
+                        override fun onFailure(call: Call<Void>, t: Throwable) {
+                            Toast.makeText(
+                                activity,
+                                "error"+ t.toString(),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+
+                    })
+
+
+                })
+
+            builder.setNegativeButton(
+                "NO",
+                DialogInterface.OnClickListener { dialog, which ->
+                    dialog.dismiss()
+                })
+
+            val alert: AlertDialog = builder.create()
+            alert.show()
+        }
         return binding.root
     }
 

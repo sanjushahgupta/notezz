@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragments.AboutUs">
+<TextView
+    android:textSize="20dp"
+    android:text="About Us"
+    android:textColor="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="Notezz is a simple note taking application where you can take notes online without having to worry about installing, customizing, learning, getting-used-to, paying, security, privacy or anything else basically.
+
+Originally created by Chirstopher Lindblom, Notezz is now run and maintained by Sushil Gupta as a side project. First version of Notezz was started in 2006 and since then more than 50,000 notes have been created by more than 10,000 users and growing slowly everyday.
+
+Notezz is not a commercial project, and as such, there is no monetization done in Notezz in anyway whatsoever and will likely remain so for the foreseeable future.
+
+Feel free to send us a quick email at support@notezz.com if you are facing any issues or just want to say hi and we'll be happy to get back to you.
+
+You can also find us on Twitter at @Notezzapp." />
+
+
+
+    <TextView
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginBottom="15dp"
+        android:text="Terms and Conditions" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="Please read these Terms and Conditions carefully before using our service.
+
+By accessing or using the service you agree to be bound by these Terms and Conditions. If you disagree with any part of these Terms and Conditions then you may not access the service.
+
+You represent that you are over the age of 18. We do not permit those under 18 to use the service.
+
+Your access to and use of the service is also conditioned on your acceptance of and compliance with our Privacy Policy.
+
+Termination
+We may terminate or suspend your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms and Conditions.
+
+Upon termination, your right to use the service will cease immediately.
+
+No guarantee
+To the maximum extent permitted by applicable law, in no event shall we or our suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, loss of data or other information, for business interruption, for personal injury, loss of privacy arising out of or in any way related to the use of or inability to use the service, third-party software and/or third-party hardware used with the service, or otherwise in connection with any provision of this Terms), even if we or any supplier has been advised of the possibility of such damages and even if the remedy fails of its essential purpose.
+
+The service is provided to you AS IS and AS AVAILABLE and with all faults and defects without warranty of any kind.
+
+Governing Law
+Your use of Notezz is subject to local, state, national and international laws.
+
+Disputes Resolution
+If you have any concern or dispute about the service, you agree to first try to resolve the dispute informally by contacting us.
+
+Changes to These Terms and Conditions
+We reserve the right, at our sole discretion, to modify or replace these Terms and Conditions at any time. By continuing to access or use our service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, in whole or in part, please stop using the website and the service.
+
+Contact us
+If you have any questions about these Terms and Conditions, you can contact us by email: support@notezz.com" />
+    </ScrollView>
+</LinearLayout>
+</layout>
