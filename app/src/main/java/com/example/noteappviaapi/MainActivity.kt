@@ -1,21 +1,24 @@
 package com.example.noteappviaapi
 
-import android.icu.util.TimeUnit
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentTransaction
 import com.example.noteappviaapi.databinding.ActivityMainBinding
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.time.DurationUnit
+
 
 private lateinit var binding : ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        //hideKeyboard(this)
     }
 
     fun APIClient(): Retrofit {

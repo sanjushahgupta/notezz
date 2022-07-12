@@ -65,6 +65,9 @@
         <action
             android:id="@+id/action_show_to_addEdit"
             app:destination="@id/addEdit" />
+        <action
+            android:id="@+id/action_show_self"
+            app:destination="@id/show" />
     </fragment>
     <fragment
         android:id="@+id/account"

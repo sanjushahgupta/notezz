@@ -14,13 +14,14 @@
         <entry key="app/src/main/res/layout/fragment_about_us.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_add_edit.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/layout/fragment_details.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_login_in.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_privacy_policy.xml" value="0.20052083333333334" />
         <entry key="app/src/main/res/layout/fragment_privacypolicy.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/layout/fragment_recycler_view.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_request_login_link.xml" value="0.21458333333333332" />
-        <entry key="app/src/main/res/layout/fragment_show.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/fragment_show.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_show_notes.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_startingpage.xml" value="0.25" />

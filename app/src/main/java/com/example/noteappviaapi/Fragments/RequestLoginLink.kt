@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.noteappviaapi.APIService
@@ -29,6 +31,11 @@ class RequestLoginLink : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_request_login_link, container, false)
 
+        binding.EnterEmailforForgotPassword.setOnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+               hideKeyboard(v);
+            }
+        }
         binding.BackToLogin.setOnClickListener({
             it.findNavController().navigate(R.id.action_requestLoginLink_to_loginIn)
         })
@@ -72,6 +79,9 @@ class RequestLoginLink : Fragment() {
         })
         return binding.root
     }
-
+    fun hideKeyboard(view: View) {
+        val inputMethodManager =activity!!. getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager?
+        inputMethodManager!!.hideSoftInputFromWindow(view.windowToken, 0)
+    }
 
 }

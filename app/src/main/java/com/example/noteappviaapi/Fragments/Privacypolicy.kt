@@ -20,5 +20,4 @@ class Privacypolicy : Fragment() {
         return binding.root
     }
 
-
 }

@@ -147,7 +147,7 @@ class Account : Fragment() {
             builder.setMessage("Are you sure?")
 
             builder.setPositiveButton(
-                "YES",
+                "Yes, delete my account",
                 DialogInterface.OnClickListener { dialog, which ->
                     val APIval = MainActivity().APIClient().create(APIService::class.java)
                     val call = APIval.DeleteAccount(
@@ -185,7 +185,7 @@ class Account : Fragment() {
                 })
 
             builder.setNegativeButton(
-                "NO",
+                "No,I will give another try.",
                 DialogInterface.OnClickListener { dialog, which ->
                     dialog.dismiss()
                 })

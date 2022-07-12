@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_marginLeft="8dp"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
     tools:context=".Fragments.RequestLoginLink">
 
 

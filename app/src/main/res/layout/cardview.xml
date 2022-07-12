@@ -23,7 +23,7 @@
             android:layout_width="116dp"
             android:layout_height="26dp"
             android:layout_marginTop="4dp"
-            android:text="@string/title"
+
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"
@@ -36,7 +36,7 @@
             android:id="@+id/descriptionTextview"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:text="@string/description"
+
             android:textColor="@color/black"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"

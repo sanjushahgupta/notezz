@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -31,6 +32,21 @@ class SignUp : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_up, container, false)
 
+        binding.editTextUsername .setOnFocusChangeListener(View.OnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+               hideKeyboard(v);
+            }
+        })
+binding.passwordEditText.setOnFocusChangeListener { v, hasFocus ->
+    if (!hasFocus) {
+       hideKeyboard(v);
+    }
+}
+        binding.ConfirmpasswordEditText.setOnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+             hideKeyboard(v);
+            }
+        }
 
         binding.Register.setOnClickListener {
 
@@ -88,6 +104,11 @@ class SignUp : Fragment() {
            it.findNavController().navigate(R.id.action_signUp_to_loginIn)
         })
     }
-   return binding.root
+        return binding.root
+    }
+
+    fun hideKeyboard(view: View) {
+        val inputMethodManager =activity!!. getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager?
+        inputMethodManager!!.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

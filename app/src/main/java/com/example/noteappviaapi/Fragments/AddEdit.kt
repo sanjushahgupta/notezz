@@ -5,8 +5,10 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -50,6 +52,18 @@ class AddEdit : Fragment() {
                 setHasOptionsMenu(true)
                 binding.editTextTitle.setText(arguments?.getString("NoteTitle"))
                 binding.editTextDescription.setText(arguments?.getString("Notebody"))
+
+                binding.editTextTitle.setOnFocusChangeListener { v, hasFocus ->
+                     if (!hasFocus) {
+                hideKeyboard(v);
+                    }
+                 }
+
+                binding.editTextDescription.setOnFocusChangeListener { v, hasFocus ->
+                     if (!hasFocus) {
+                      hideKeyboard(v);
+                        }
+                }
 
                 var id = arguments?.getInt("id")!!
 
@@ -217,6 +231,10 @@ class AddEdit : Fragment() {
             navController.navigate(R.id.privacypolicy)
         }
         return super.onOptionsItemSelected(item)
+    }
+    fun hideKeyboard(view: View) {
+        val inputMethodManager =activity!!. getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager?
+        inputMethodManager!!.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
 
