@@ -27,8 +27,8 @@ class Startingpage : Fragment() {
         sharedPreference  = context?.let { SharedPreference(it) }
 
         val  str_login_status =  sharedPreference !!.getPreferenceString( "login_status" )
-        if  (str_login_status?.isEmpty() != null){
-            Toast.makeText(activity,"str_login_status" + str_login_status,Toast.LENGTH_LONG).show()
+        if  (!str_login_status?.isEmpty()!!){
+           // Toast.makeText(activity,"str_login_status is " + str_login_status,Toast.LENGTH_LONG).show()
            val bundle = bundleOf("SavedToken" to str_login_status)
             findNavController().navigate(R.id.show,bundle)
         }

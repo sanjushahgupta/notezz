@@ -208,7 +208,7 @@ class AddEdit : Fragment() {
         val id = item!!.itemId
 
         if (id == R.id.logout){
-         //   SharedPreference(requireContext()).save_String("login_status" , "")
+           SharedPreference(requireContext()).save_String("login_status" , "")
 
             val navController: NavController = view?.let { Navigation.findNavController(this.view!!) }!!
 

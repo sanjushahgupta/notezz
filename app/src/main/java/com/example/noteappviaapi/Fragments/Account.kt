@@ -78,6 +78,7 @@ class Account : Fragment() {
                                 "Account Updated",
                                 Toast.LENGTH_LONG
                             ).show()
+
                         } else {
                             Toast.makeText(
                                 activity,
