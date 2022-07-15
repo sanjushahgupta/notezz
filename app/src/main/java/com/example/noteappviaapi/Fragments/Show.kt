@@ -15,25 +15,23 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.noteappviaapi.APIService
-import com.example.noteappviaapi.MainActivity
+import com.example.noteappviaapi.*
 import com.example.noteappviaapi.Model.addNoteResponseModel
-import com.example.noteappviaapi.R
-import com.example.noteappviaapi.RecyclerAdapter
 import com.example.noteappviaapi.databinding.FragmentShowBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 private lateinit var binding:FragmentShowBinding
-
+var sharedPreference : SharedPreference? = null
 class Show : Fragment() {
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
-    private val sharedPrefFile = "kotlinsharedpreference"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        sharedPreference  = context?.let { SharedPreference(it) }
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 val builder: AlertDialog.Builder = AlertDialog.Builder(context)
@@ -54,7 +52,7 @@ class Show : Fragment() {
 
             }
         })
-        val sharedPreferences: SharedPreferences = this.activity!!.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+
         binding = DataBindingUtil.inflate(inflater, com.example.noteappviaapi.R.layout.fragment_show, container, false)
         setHasOptionsMenu(true)
         val created =arguments?.getString("Created")
@@ -63,7 +61,7 @@ class Show : Fragment() {
         val passedTokenFromLogin = arguments?.getString("SavedToken")!!
 
 
-       val AccountUsername = arguments?.getString("AccountUsername")!!
+   //    val AccountUsername = arguments?.getString("AccountUsername")!!
       //  val id = arguments?.getInt("id")
         val call = APIval.ShowNote("Bearer $passedTokenFromLogin" )
        call.enqueue(object:Callback<List<addNoteResponseModel>>{
@@ -81,7 +79,7 @@ class Show : Fragment() {
 
                                 binding.emptytxt.isInvisible = false
                             }
-                            RecyclerAdapter(it,"$passedTokenFromLogin","$created","$Updated","$AccountUsername")
+                            RecyclerAdapter(it,"$passedTokenFromLogin","$created","$Updated",)
 
                         }
 
@@ -126,7 +124,7 @@ class Show : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val passedTokenFromLogin = arguments!!.getString("SavedToken")!!
-        val AccountUsername = arguments?.getString("AccountUsername")!!
+      //  val AccountUsername = arguments?.getString("AccountUsername")!!
         val navController: NavController = view?.let { Navigation.findNavController(this.view!!) }!!
         val bundle = Bundle()
         bundle.putString("NoteTitle","")
@@ -136,7 +134,7 @@ class Show : Fragment() {
         bundle.putString("SavedToken", "$passedTokenFromLogin")
         bundle.putString("Created", "")
         bundle.putString("Updated", "")
-        bundle.putString("AccountUsername",  AccountUsername)
+      //  bundle.putString("AccountUsername",  AccountUsername)
         navController.navigate(R.id.action_show_to_addEdit,bundle)
         return super.onOptionsItemSelected(item)
     }

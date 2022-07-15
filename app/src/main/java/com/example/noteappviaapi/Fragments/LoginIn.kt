@@ -22,6 +22,7 @@ import com.example.noteappviaapi.Model.DefaultUserResponse
 import com.example.noteappviaapi.Model.MyErrorMessageModel
 import com.example.noteappviaapi.Model.userModel
 import com.example.noteappviaapi.R
+import com.example.noteappviaapi.SharedPreference
 import com.example.noteappviaapi.databinding.FragmentLoginInBinding
 import com.google.gson.Gson
 import retrofit2.Call
@@ -87,8 +88,10 @@ class LoginIn : Fragment(){
                 ) {
                     if (response.isSuccessful) {
                         val SavedToken = response.body()!!.token
-                        val AccountUsername = EnterUsername.toString()
-                        val bundle = bundleOf("SavedToken" to SavedToken, "AccountUsername" to AccountUsername)
+                       // val AccountUsername = EnterUsername.toString()
+
+                        SharedPreference(requireContext()).save_String("login_status" , response.body()!!.token.toString())
+                        val bundle = bundleOf("SavedToken" to SavedToken)
 
 
                         it.findNavController().navigate(R.id.action_loginIn_to_show, bundle)

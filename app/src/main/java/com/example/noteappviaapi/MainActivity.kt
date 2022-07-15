@@ -15,10 +15,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 private lateinit var binding : ActivityMainBinding
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         //hideKeyboard(this)
+
     }
 
     fun APIClient(): Retrofit {

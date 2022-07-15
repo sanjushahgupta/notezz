@@ -22,6 +22,7 @@ import com.example.noteappviaapi.Model.addNoteResponseModel
 import com.example.noteappviaapi.Model.noteModel
 import com.example.noteappviaapi.Model.updateModel
 import com.example.noteappviaapi.R
+import com.example.noteappviaapi.SharedPreference
 import com.example.noteappviaapi.databinding.FragmentAddEditBinding
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -207,6 +208,8 @@ class AddEdit : Fragment() {
         val id = item!!.itemId
 
         if (id == R.id.logout){
+         //   SharedPreference(requireContext()).save_String("login_status" , "")
+
             val navController: NavController = view?.let { Navigation.findNavController(this.view!!) }!!
 
             navController.navigate(R.id.action_addEdit_to_startingpage)
