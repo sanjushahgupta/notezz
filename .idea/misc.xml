@@ -23,8 +23,8 @@
         <entry key="app/src/main/res/layout/fragment_request_login_link.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/layout/fragment_show.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_show_notes.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_startingpage.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_startingpage.xml" value="0.335" />
         <entry key="app/src/main/res/layout/recyclerview.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/recyclervieww.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/menu/addnotemenu.xml" value="0.23020833333333332" />

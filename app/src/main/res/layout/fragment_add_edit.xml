@@ -13,12 +13,11 @@
 
         <Button
             android:id="@+id/addbutton"
-            android:layout_width="50dp"
-            android:layout_height="45dp"
-            android:backgroundTint="@color/white"
+            android:layout_width="54dp"
+            android:layout_height="38dp"
             android:layout_marginEnd="4dp"
-            android:layout_marginTop="2dp"
-            android:drawableLeft="@drawable/ic_baseline_save_24"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/ic_baseline_save_24_1"
             app:layout_constraintBottom_toTopOf="@+id/scrollView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -29,8 +28,8 @@
 
         <EditText
             android:id="@+id/editTextTitle"
-            android:layout_width="286dp"
-            android:layout_height="35dp"
+            android:layout_width="295dp"
+            android:layout_height="41dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/boxstyle"
@@ -51,6 +50,7 @@
             android:layout_marginRight="6dp"
             android:layout_marginEnd="4dp"
             android:background="@drawable/boxstyle"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/editTextTitle"
             app:layout_constraintHorizontal_bias="0.025"
@@ -66,11 +66,10 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
-                android:layout_marginEnd="4dp"
                 android:background="@{null}"
                 android:backgroundTint="@color/white"
                 android:fitsSystemWindows="true"
-                android:hint="Content"
+                android:hint="Content           "
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
